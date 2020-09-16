@@ -11,6 +11,13 @@
   text-align: center;
 }
 
-#themecolors .selector{
+#themecolors .selector, .cursor{
   cursor: pointer;
+}
+
+#google-btn{
+  /* align-items: center; */
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
 }

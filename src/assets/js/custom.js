@@ -5,6 +5,7 @@ Email: niravjoshi87@gmail.com
 File: js
 */
 
+
 const customInitFunctions = () => {
 
     $(function() {
