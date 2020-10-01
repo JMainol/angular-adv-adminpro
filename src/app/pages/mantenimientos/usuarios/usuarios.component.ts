@@ -74,9 +74,9 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       }
     
       this.busquedasService.buscar( 'usuarios', termino )
-            .subscribe( resultados => {
+            .subscribe( (resp: Usuario[]) => {
 
-                this.usuarios = resultados;
+                this.usuarios = resp;
 
             });
 
@@ -95,7 +95,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       showCancelButton: true,
       confirmButtonText: 'Si, borrarlo'
     }).then((result) => {
-      if (result.isConfirmed) {
+      if (result.value) {
         
         this.usuarioService.eliminarUsuario( usuario )
               .subscribe( resp =>  {
