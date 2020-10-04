@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.model';
+import { Router } from '@angular/router';
+
+declare function customSidebar();
+
 
 
 @Component({
@@ -9,16 +13,31 @@ import { Usuario } from '../../models/usuario.model';
   styles: [
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   public usuario: Usuario;
 
-  constructor( private usuarioService: UsuarioService) { 
+  constructor( private usuarioService: UsuarioService,
+               private router: Router) { 
+
     this.usuario = usuarioService.usuario;
+
+  }
+
+  ngOnInit(): void {
+    customSidebar();
   }
 
   logout() {
     this.usuarioService.logout();
+  }
+
+  buscar( termino: string) {
+    
+    if ( termino.length === 0 ) {
+      return;
+    }
+    this.router.navigateByUrl(`/dashboard/buscar/${ termino }`);
   }
 
 }
